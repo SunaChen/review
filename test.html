@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+
+    /*test  1
+    .test{
+      min-width: 500px;
+      padding: 0 200px;
+    }
+    footer{
+      clear: both;
+    }
+    .col{
+      position: relative;
+      float: left;
+      height: 500px;
+    }
+    #center{
+      width: 100%;
+      background-color: red;
+    }
+    #left,#right{
+      width: 200px;
+    }
+    #left{
+      margin-left: -100%;
+      left: -200px;
+      background-color: yellow;
+    }
+    #right{
+      margin-left: -200px;
+      right: -200px;
+      background-color: green;
+    }
+    */
+    /*flex 布局*/
+    .test{
+      display: flex;
+    }
+    #center{
+      flex: 1;
+      background-color: red;
+    }
+    #left{
+      /*flex-grow, flex-shrink 和 flex-basis的简写 默认值为0 1 auto。后两个属性可选。
+          flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+          flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+          lex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
+      */
+      flex: 0 0 200px;
+      /*
+      order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+      */
+      order: -1;
+      background-color: yellow;
+    }
+    #right{
+      flex: 0 0 200px;
+      background-color: green;
+
+    }
+
+
+    /*containter  2*/
+    .containter{
+
+    }
+    #main,#left2,#right2{
+      float: left;
+      min-height: 100px;
+    }
+    #main{
+      width: 100%;
+      background-color: blue;
+    }
+    .main-inner{
+      padding: 0 200px;
+    }
+    #left2,#right2{
+      width: 200px;
+    }
+
+    #left2{
+      margin-left: -100%;
+      background-color: aquamarine;
+    }
+    #right2{
+      margin-left: -200px;
+      background-color: antiquewhite;
+    }
+
+    /*   3*/
+
+
+
+  </style>
+</head>
+<body>
+
+<!--  左右固定，中间自适应1-->
+<div class="test">
+  <div id="center" class="col">center1center2</div>
+  <div id="left" class="col">left1left2</div>
+  <div id="right" class="col">right1right2</div>
+</div>
+<footer></footer>
+<br/>
+<br/>
+
+<div style="border: 1px dotted gray;"></div>
+<br/>
+<br/>
+
+<!--  左右固定，中间自适应2-->
+<div class="containter">
+  <div id="main">
+    <div class="main-inner">blue1blue2blue3blue4blue5</div>
+  </div>
+  <div id="left2">aquamarine1aquamarine2</div>
+  <div id="right2">antiquewhite1antiquewhite2</div>
+</div>
+<br/>
+<br/>
+
+<!--  左右固定，中间自适应3-->
+
+<script>
+
+  <!--数组拉平-->
+  Object.prototype.flatArrcc = function (){
+    var result = []
+    function han(arr){
+      for(var i=0,j = arr.length; i < j; i++){
+        if(Object.prototype.toString.call(arr[i]).slice(8,-1) === 'Array') {
+          han(arr[i])
+        }else{
+          result.push(arr[i])
+        }
+
+      }
+    }
+    han(this)
+
+    return result
+  }
+
+  console.log([1,[2,3,[4,'a']]].flatArrcc())
+</script>
+
+</body>
+</html>
