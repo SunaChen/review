@@ -94,8 +94,6 @@
 
     /*   3*/
 
-
-
   </style>
 </head>
 <body>
@@ -127,27 +125,31 @@
 
 <!--  左右固定，中间自适应3-->
 
-<script>
 
-  <!--数组拉平-->
-  Object.prototype.flatArrcc = function (){
-    var result = []
-    function han(arr){
-      for(var i=0,j = arr.length; i < j; i++){
-        if(Object.prototype.toString.call(arr[i]).slice(8,-1) === 'Array') {
-          han(arr[i])
-        }else{
-          result.push(arr[i])
-        }
+<!--移动端1像素-->
 
-      }
-    }
-    han(this)
-
-    return result
+<style>
+  #box{
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+  #box:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
   }
 
-  console.log([1,[2,3,[4,'a']]].flatArrcc())
+</style>
+<div id="box"></div>
+
+<script>
+
+
 </script>
 
 </body>

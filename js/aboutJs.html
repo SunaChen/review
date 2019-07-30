@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断数组是否回滚</title>
+  <style>
+    .containter{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: green;
+
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="containter">
+
+</div>
+<br/>
+<br/>
+
+
+<script>
+
+//判断一个数组是否回滚[1,2,3,4,3,2,1]
+  function handle(arr) {
+    for (let i = 0,j = arr.length-1;i<j; i++){
+      return  arr[i] === arr[j-i] 
+    }
+  }
+  console.log(handle([1,2,3,2,1]))
+
+  //数组拉平
+  Object.prototype.flatArrcc = function (){
+      var result = []
+      function han(arr){
+          for(var i=0,j = arr.length; i < j; i++){
+              if(Object.prototype.toString.call(arr[i]).slice(8,-1) === 'Array') {
+                  han(arr[i])
+              }else{
+                  result.push(arr[i])
+              }
+
+          }
+      }
+      han(this)
+
+      return result
+  }
+
+  console.log([1,[2,3,[4,'a']]].flatArrcc())
+
+
+//    将一个字符串封装驼峰命名   foo='get-element-by-id' ----> getElementById
+
+function toUpper(foo) {
+    var arr = foo.split('-');
+    console.log(arr)  // [get,element,by,id]
+    for (var i = 1; i< arr.length; i++){
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substr(1,arr[i].length-1)
+    }
+    return arr.join('')
+}
+console.log(toUpper('get-element-by-id'))
+
+//    冒泡算法
+    var arr = [1,2,5,4,8,3]
+
+    for (let i =0; i<arr.length-1;i++){   //轮数
+      for (let j = 0; j<arr.length-1-i;j++){  //次数
+          if (arr[j] > arr[j+1]){  //前面的大于后面的时候交换
+              var temp = arr[j];
+              arr[j] = arr[j+1];
+              arr[j+1] = temp;
+          }
+      }
+    }
+    console.log(arr);
+  
+//反转数组
+    for (let i = 0; i<arr.length/2; i++){
+        let temp = arr[i];
+        arr[i] = arr[arr.length - 1 -i]
+        arr[arr.length - 1 -i] = temp
+    }
+    console.log(arr);
+
+//    数组去重
+    var arrSingle = [8,11,20,5,20,8,0,2,4,0,8];
+    var t = [];
+    t[0] = arrSingle[0];
+    
+    for (var i = 0; i<arrSingle.length;i++){
+        for (var k = 0; k<t.length;k++){
+            if (t[k] == arrSingle[i]){
+                break
+            }else if (k == t.length-1){   //原数组中的某个元素与新数组中的最后一个元素比较
+                t.push(arrSingle[i])
+            }
+        }
+    }
+
+    console.log(t)
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
